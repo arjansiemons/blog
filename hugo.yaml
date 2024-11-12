@@ -1,0 +1,22 @@
+baseURL: https://example.org/
+languageCode: en-us
+title: Arjan Siemons Blog
+theme: ["PaperMod"]
+params:
+  profileMode:
+    enabled: true
+    title: PaperMod
+    imageUrl: "#"
+    imageTitle: my image
+    # imageWidth: 120
+    # imageHeight: 120
+    buttons:
+      - name: Archives
+        url: archives
+      - name: Tags
+        url: tags
+  socialIcons:
+    - name: github
+      url: https://github.com/arjansiemons
+    - name: bluesky
+      url: https://bluesky.com
