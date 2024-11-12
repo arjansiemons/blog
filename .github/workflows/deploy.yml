@@ -30,9 +30,8 @@ jobs:
           docker build -t ${{ secrets.DOCKER_USERNAME }}/hugo-site:${{ github.sha }} .
           docker push ${{ secrets.DOCKER_USERNAME }}/hugo-site:${{ github.sha }}
       - name: Set up Kubernetes
-        uses: azure/setup-kubectl@v2
-        with:
-          version: "1.25" # Adjust to your Kubernetes version
+        uses: azure/setup-kubectl@v4
+        id: install
       - name: Deploy to Kubernetes
         env:
           KUBECONFIG: ${{ secrets.KUBECONFIG }} # Add KUBECONFIG as a GitHub secret
