@@ -15,16 +15,9 @@ spec:
     spec:
       containers:
         - name: hugo-site
-          image: nginx:alpine
+          image: technois/hugo-site:latest # Image tag will be updated by GitHub Actions
           ports:
             - containerPort: 80
-          volumeMounts:
-            - name: hugo-content
-              mountPath: /usr/share/nginx/html
-      volumes:
-        - name: hugo-content
-          configMap:
-            name: hugo-site
 ---
 apiVersion: v1
 kind: Service
