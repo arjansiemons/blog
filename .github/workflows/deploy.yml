@@ -18,6 +18,12 @@ jobs:
           extended: true
       - name: Build
         run: hugo --minify
-      - name: Deploy to Kubernetes
-        run: |
-          kubectl apply -f k8s-deployment.yaml
+      # - name: Deploy to Kubernetes
+      #   run: |
+      #     kubectl apply -f k8s-deployment.yaml
+      - uses: actions-hub/kubectl@master
+        env:
+          KUBE_CONFIG: ${{ secrets.KUBE_CONFIG }}
+        with:
+          args: |
+            kubectl apply -f k9s-deployment.yaml

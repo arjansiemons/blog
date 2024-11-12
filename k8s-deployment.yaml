@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hugo-site
+  namespace: default
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hugo-site
+  template:
+    metadata:
+      labels:
+        app: hugo-site
+    spec:
+      containers:
+        - name: hugo-site
+          image: nginx:alpine
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: hugo-content
+              mountPath: /usr/share/nginx/html
+      volumes:
+        - name: hugo-content
+          configMap:
+            name: hugo-site
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: hugo-site
+  namespace: default
+spec:
+  selector:
+    app: hugo-site
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: hugo-site
+  namespace: default
+spec:
+  rules:
+    - host: example.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: hugo-site
+                port:
+                  number: 80
