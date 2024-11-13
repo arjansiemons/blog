@@ -12,6 +12,9 @@ jobs:
     permissions:
       contents: read # read the repository
     steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: true
       - name: Build and Push Image to docker registry with kaniko
         run: |
           cat <<EOF > /kaniko/.docker/config.json
@@ -24,7 +27,8 @@ jobs:
           }
           EOF
 
-          /kaniko/executor --dockerfile="./Dockerfile" \
+          /kaniko/executor \
+            --dockerfile="./Dockerfile" \
             --context="${{ github.repositoryUrl }}#${{ github.ref }}#${{ github.sha }}"  \
             --destination="$DOCKER_IMAGE_NAME:${{ github.sha }}" \
             ${{ env.KANIKO_CACHE_ARGS }} \
