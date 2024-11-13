@@ -49,4 +49,4 @@ jobs:
       - name: Deploy manifest
         run: |
           kubectl set image deployment/hugo-site hugo-site=technois/hugo-site:${{ github.sha }}
-          kubectl apply -f k8s-deployment.yaml
+          #       kubectl apply -f k8s-deployment.yaml
