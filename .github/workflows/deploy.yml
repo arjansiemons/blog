@@ -33,6 +33,10 @@ jobs:
           GIT_USERNAME: ${{ github.actor }}
           GIT_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
           DOCKER_IMAGE_NAME: "technois/hugo-site"
+  deploy-to-kubernetes:
+    needs: build-to-docker-hub
+    runs-on: arc-runner-set
+    steps:
       - name: Set up Kubernetes
         uses: azure/setup-kubectl@v4
         id: install
@@ -41,4 +45,3 @@ jobs:
           KUBECONFIG: ${{ secrets.KUBECONFIG }} # Add KUBECONFIG as a GitHub secret
         run: |
           kubectl set image deployment/hugo-site hugo-site=${{ secrets.DOCKER_USERNAME }}/hugo-site:${{ github.sha }}
-          kubectl apply -f deployment.yaml
