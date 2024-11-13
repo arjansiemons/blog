@@ -20,3 +20,5 @@ params:
       url: https://github.com/arjansiemons
     - name: bluesky
       url: https://bsky.app/profile/arjansiemons.bsky.social
+    - name: linkedin
+      url: https://www.linkedin.com/in/arjan-siemons/
