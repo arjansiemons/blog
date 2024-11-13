@@ -30,7 +30,7 @@ jobs:
         uses: azure/setup-kubectl@v4
         id: install
       - name: Deploy to Kubernetes
-        env: #test
+        env: #test2
           KUBECONFIG: ${{ secrets.KUBECONFIG }} # Add KUBECONFIG as a GitHub secret
         run: |
           kubectl set image deployment/hugo-site hugo-site=${{ secrets.DOCKER_USERNAME }}/hugo-site:${{ github.sha }}
