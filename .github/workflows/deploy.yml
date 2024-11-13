@@ -39,7 +39,7 @@ jobs:
     steps:
       - name: Set up Kubernetes
         uses: azure/setup-kubectl@v5
-        id: install kubectl set image deployment/hugo-site hugo-site=${{ secrets.DOCKER_USERNAME }}/hugo-site:${{ github.sha }}
+        id: install
       # Step 4: Set up kubeconfig
       - name: Setup kubeconfig
         run: echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > ~/.kube/config
