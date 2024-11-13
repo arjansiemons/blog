@@ -5,7 +5,7 @@ theme: ["PaperMod"]
 params:
   profileMode:
     enabled: true
-    title: PaperMod
+    title: Arjan Siemons
     imageUrl: "#"
     imageTitle: my image
     # imageWidth: 120
