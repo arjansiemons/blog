@@ -22,3 +22,11 @@ params:
       url: https://bsky.app/profile/arjansiemons.bsky.social
     - name: linkedin
       url: https://www.linkedin.com/in/arjan-siemons/
+  ShowReadingTime: true
+  ShowCodeCopyButtons: true
+  defaultTheme: dark
+outputs:
+  home:
+    - HTML
+    - RSS
+    - JSON # necessary for search
