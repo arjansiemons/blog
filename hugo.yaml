@@ -1,6 +1,6 @@
 baseURL: https://example.org/
 languageCode: en-us
-title: Arjan Siemons Blog
+title: Arjan Siemons Blog Test
 theme: ["PaperMod"]
 params:
   profileMode:
