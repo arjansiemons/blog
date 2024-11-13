@@ -19,4 +19,4 @@ params:
     - name: github
       url: https://github.com/arjansiemons
     - name: bluesky
-      url: https://bluesky.com
+      url: https://bsky.app/profile/arjansiemons.bsky.social
