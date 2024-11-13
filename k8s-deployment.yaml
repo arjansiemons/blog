@@ -16,6 +16,7 @@ spec:
       containers:
         - name: hugo-site
           image: technois/hugo-site:latest #Image tag will be updated by GitHub Actions
+          imagePullPolicy: Always
           ports:
             - containerPort: 80
 ---
