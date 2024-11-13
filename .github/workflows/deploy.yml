@@ -48,6 +48,13 @@ jobs:
           extended: true
       - name: Build Hugo Site
         run: hugo --minify
+      - name: Build and push container with Kaniko
+        uses: gcr.io/kaniko-project/executor:latest
+        env:
+          DOCKER_CONFIG: /kaniko/.docker
+          IMAGE: $DOCKER_REGISTRY/your-hugo-site:latest
+        with:
+          args: --context ${{ github.workspace }} --dockerfile Dockerfile --destination $IMAGE
       - name: Push to DockerHub
         uses: docker/build-push-action@v2
         with:
