@@ -48,4 +48,5 @@ jobs:
           kubeconfig: ${{ secrets.KUBECONFIG }} # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
       - name: Deploy manifest
         run: |
+          kubectl set image deployment/hugo-site hugo-site=technois/hugo-site:${{ github.sha }}
           kubectl apply -f k8s-deployment.yaml
