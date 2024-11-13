@@ -8,13 +8,10 @@ jobs:
   build-to-docker-hub:
     runs-on: arc-runner-set # uses self-hosted runner scale set
     container:
-      image: gcr.io/kaniko-project/executor:v1.20.0-debug
+      image: gcr.io/kaniko-project/executor:v1.23.2-debug
     permissions:
       contents: read # read the repository
     steps:
-      - uses: actions/checkout@v4
-        with:
-          submodules: true
       - name: Build and Push Image to docker registry with kaniko
         run: |
           cat <<EOF > /kaniko/.docker/config.json
@@ -33,6 +30,7 @@ jobs:
             --destination="$DOCKER_IMAGE_NAME:${{ github.sha }}" \
             ${{ env.KANIKO_CACHE_ARGS }} \
             --push-retry 5
+            --git recurse-submodules=true
         env:
           GIT_USERNAME: ${{ github.actor }}
           GIT_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
