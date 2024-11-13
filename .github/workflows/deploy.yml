@@ -46,15 +46,6 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBECONFIG }} # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
-      - name: Deploy to AKS
-        uses: Azure/k8s-deploy@v4
-        with:
-          #         resource-group: ${{ secrets.resource_group }}
-          #name: ${{ secrets.cluster_name }}
-          action: deploy
-          strategy: basic
-          private-cluster: true
-          namespace: default
-          manifests: |
-            k8s-deployment.yaml
-          pull-images: false
+      - name: Deploy manifest
+        run: |
+          kubectl apply -f k8s-deployment.yaml
