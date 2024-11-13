@@ -45,3 +45,17 @@ jobs:
           KUBECONFIG: ${{ secrets.KUBECONFIG }} # Add KUBECONFIG as a GitHub secret
         run: |
           kubectl set image deployment/hugo-site hugo-site=${{ secrets.DOCKER_USERNAME }}/hugo-site:${{ github.sha }}
+      - name: Deploy to AKS
+        uses: azure/k8s-deploy@v4
+        with:
+          #         resource-group: ${{ secrets.resource_group }}
+          #name: ${{ secrets.cluster_name }}
+          action: deploy
+          strategy: basic
+          private-cluster: true
+          namespace: default
+          manifests: |
+            k8s-deployment.yaml
+          images: |
+            ${{ secrets.registry_login_server }}/myservice-chat:latest
+          pull-images: false
