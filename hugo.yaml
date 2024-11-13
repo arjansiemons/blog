@@ -1,6 +1,6 @@
 baseURL: https://blog.local.siemons-it.nl/
 languageCode: en-us
-title: Arjan Siemons Blog Test
+title: Arjan Siemons Blog
 theme: PaperMod
 enableRobotsTXT: true
 googleAnalytics: G-0C69MLMX9H
@@ -8,7 +8,7 @@ params:
   env: production
   description: "Arjan Siemons Blog"
   profileMode:
-    enabled: true
+    enabled: false
     title: Arjan Siemons
     imageUrl: "/images/li-profile.jpeg"
     imageTitle: Me
@@ -19,6 +19,9 @@ params:
         url: posts
       - name: Tags
         url: tags
+  homeInfoParams:
+    Title: Arjan Siemons Blog
+    Content: Test 123
   socialIcons:
     - name: github
       url: https://github.com/arjansiemons
@@ -26,6 +29,8 @@ params:
       url: https://bsky.app/profile/arjansiemons.bsky.social
     - name: linkedin
       url: https://www.linkedin.com/in/arjan-siemons/
+    - name: x
+      url: https://x.com/arjansiemons
   ShowReadingTime: true
   ShowCodeCopyButtons: true
   defaultTheme: dark
