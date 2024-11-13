@@ -19,12 +19,13 @@ jobs:
           extended: true
       - name: Build Hugo Site
         run: hugo --minify
-      - name: Kaniko build
-        uses: aevea/action-kaniko@master
+      - name: Push to DockerHub
+        uses: docker/build-push-action@v1
         with:
-          image: technois/hugo-site
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
+          repository: technois/hugo-site
+          tags: latest
       - name: Set up Kubernetes
         uses: azure/setup-kubectl@v4
         id: install
