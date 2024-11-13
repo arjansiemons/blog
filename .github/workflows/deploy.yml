@@ -42,7 +42,7 @@ jobs:
         id: install
       # Step 4: Set up kubeconfig
       - name: Setup kubeconfig
-        run: echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > ~/.kube/config
+        run: echo "${{ secrets.KUBECONFIG }}" | base64 -d > ~/.kube/config
       - name: Deploy to AKS
         uses: azure/k8s-deploy@v4
         with:
