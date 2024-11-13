@@ -28,7 +28,6 @@ jobs:
             --dockerfile="./Dockerfile" \
             --context="${{ github.repositoryUrl }}#${{ github.ref }}#${{ github.sha }}"  \
             --destination="$DOCKER_IMAGE_NAME:${{ github.sha }}" \
-            ${{ env.KANIKO_CACHE_ARGS }} \
             --push-retry 5
             --git recurse-submodules=true
         env:
