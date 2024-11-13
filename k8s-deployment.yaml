@@ -15,7 +15,7 @@ spec:
     spec:
       containers:
         - name: hugo-site
-          image: technois/hugo-site:latest # Image tag will be updated by GitHub Actions
+          image: technois/hugo-site:9440e5a #Image tag will be updated by GitHub Actions
           ports:
             - containerPort: 80
 ---
@@ -39,7 +39,7 @@ metadata:
   namespace: default
 spec:
   rules:
-    - host: example.com
+    - host: blog.local.siemons-it.nl
       http:
         paths:
           - path: /

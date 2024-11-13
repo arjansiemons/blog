@@ -57,6 +57,4 @@ jobs:
           namespace: default
           manifests: |
             k8s-deployment.yaml
-          images: |
-            technois/hugo-site:latest
           pull-images: false
