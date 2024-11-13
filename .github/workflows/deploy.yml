@@ -37,6 +37,7 @@ jobs:
     needs: build-to-docker-hub
     runs-on: arc-runner-set
     steps:
+      - uses: actions/checkout@v4
       - name: Set up Kubernetes
         uses: azure/setup-kubectl@v4
         id: install
@@ -45,7 +46,6 @@ jobs:
         with:
           method: kubeconfig
           kubeconfig: ${{ secrets.KUBECONFIG }} # Use secret (https://developer.github.com/actions/managing-workflows/storing-secrets/)
-          id: setcontext
       - name: Deploy to AKS
         uses: Azure/k8s-deploy@v5
         with:
