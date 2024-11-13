@@ -25,6 +25,7 @@ params:
   ShowReadingTime: true
   ShowCodeCopyButtons: true
   defaultTheme: dark
+  enableRobotsTXT: true
 outputs:
   home:
     - HTML
