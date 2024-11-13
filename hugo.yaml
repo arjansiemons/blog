@@ -1,19 +1,22 @@
 baseURL: https://blog.local.siemons-it.nl/
 languageCode: en-us
 title: Arjan Siemons Blog Test
-theme: ["PaperMod"]
+theme: PaperMod
 enableRobotsTXT: true
+googleAnalytics: G-0C69MLMX9H
 params:
+  env: production
+  description: "Arjan Siemons Blog"
   profileMode:
     enabled: true
     title: Arjan Siemons
     imageUrl: "/images/li-profile.jpeg"
-    imageTitle: my image
-    # imageWidth: 120
-    # imageHeight: 120
+    imageTitle: Me
+    #imageWidth: 120
+    #imageHeight: 120
     buttons:
-      - name: Archives
-        url: archives
+      - name: Posts
+        url: posts
       - name: Tags
         url: tags
   socialIcons:
