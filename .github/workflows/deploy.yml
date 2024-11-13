@@ -3,7 +3,36 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 jobs:
+  build-to-docker-hub:
+    runs-on: arc-runner-set # uses self-hosted runner scale set
+    container:
+      image: gcr.io/kaniko-project/executor:v1.20.0-debug
+    permissions:
+      contents: read # read the repository
+    steps:
+      - name: Build and Push Image to docker registry with kaniko
+        run: |
+          cat <<EOF > /kaniko/.docker/config.json
+          {
+            "auths": {
+              "https://index.docker.io/v1/": {
+                "auth": "$(echo -n "${{ secrets.DOCKER_USERNAME }}:${{ secrets.DOCKER_PASSWORD }}" | base64 )"
+              }
+            }
+          }
+          EOF
+
+          /kaniko/executor --dockerfile="./app/Dockerfile" \
+            --context="${{ github.repositoryUrl }}#${{ github.ref }}#${{ github.sha }}"  \
+            --destination="$DOCKER_IMAGE_NAME:$(echo ${GITHUB_SHA} | head  -c 7)" \
+            ${{ env.KANIKO_CACHE_ARGS }} \
+            --push-retry 5
+        env:
+          GIT_USERNAME: ${{ github.actor }}
+          GIT_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+          DOCKER_IMAGE_NAME: "<docker-username>/nginx"
   deploy:
     runs-on: arc-runner-set
     steps:
