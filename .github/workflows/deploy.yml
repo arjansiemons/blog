@@ -38,13 +38,11 @@ jobs:
     runs-on: arc-runner-set
     steps:
       - name: Set up Kubernetes
-        uses: azure/setup-kubectl@v4
-        id: install
-      - name: Deploy to Kubernetes
-        env:
-          KUBECONFIG: ${{ secrets.KUBECONFIG }} # Add KUBECONFIG as a GitHub secret
-        run: |
-          kubectl set image deployment/hugo-site hugo-site=${{ secrets.DOCKER_USERNAME }}/hugo-site:${{ github.sha }}
+        uses: azure/setup-kubectl@v5
+        id: install kubectl set image deployment/hugo-site hugo-site=${{ secrets.DOCKER_USERNAME }}/hugo-site:${{ github.sha }}
+      # Step 4: Set up kubeconfig
+      - name: Setup kubeconfig
+        run: echo "${{ secrets.KUBE_CONFIG }}" | base64 -d > ~/.kube/config
       - name: Deploy to AKS
         uses: azure/k8s-deploy@v4
         with:
@@ -57,5 +55,5 @@ jobs:
           manifests: |
             k8s-deployment.yaml
           images: |
-            ${{ secrets.registry_login_server }}/myservice-chat:latest
+            technois/hugo-site:latest
           pull-images: false
