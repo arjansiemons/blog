@@ -3,7 +3,6 @@ languageCode: en-us
 title: Arjan Siemons Blog
 theme: PaperMod
 enableRobotsTXT: true
-googleAnalytics: G-0C69MLMX9H
 params:
   env: production
   description: "Arjan Siemons Blog"
