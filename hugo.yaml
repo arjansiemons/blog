@@ -2,11 +2,12 @@ baseURL: https://blog.local.siemons-it.nl/
 languageCode: en-us
 title: Arjan Siemons Blog Test
 theme: ["PaperMod"]
+enableRobotsTXT: true
 params:
   profileMode:
     enabled: true
     title: Arjan Siemons
-    imageUrl: "#"
+    imageUrl: "/images/li-profile.jpeg"
     imageTitle: my image
     # imageWidth: 120
     # imageHeight: 120
@@ -25,7 +26,6 @@ params:
   ShowReadingTime: true
   ShowCodeCopyButtons: true
   defaultTheme: dark
-  enableRobotsTXT: true
 outputs:
   home:
     - HTML
