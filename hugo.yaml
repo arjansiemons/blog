@@ -1,6 +1,6 @@
 baseURL: https://blog.local.siemons-it.nl/
 languageCode: en-us
-title: Arjan Siemons Blog
+title: Arjan Siemons
 theme: PaperMod
 enableRobotsTXT: true
 params:
@@ -19,8 +19,8 @@ params:
       - name: Tags
         url: tags
   homeInfoParams:
-    Title: Arjan Siemons Blog
-    Content: Test 123
+    Title: Arjan Siemons
+    Content: Welcome to my personal blog.
   socialIcons:
     - name: github
       url: https://github.com/arjansiemons
