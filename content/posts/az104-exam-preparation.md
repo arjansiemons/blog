@@ -1,6 +1,6 @@
 ---
 date: '2025-01-28T13:41:00+01:00'
-draft: true
+draft: false
 title: 'AZ-104 Exam Preparation'
 tags: ["azure", "certification", "az104", "cloud"]
 ---
@@ -20,4 +20,3 @@ The [John Savill AZ-104 Exam Cram video](https://youtu.be/0Knf9nub4-k) on YouTub
 For hands-on practice, I completed the [Microsoft AZ-104 labs](https://github.com/MicrosoftLearning/AZ-104-MicrosoftAzureAdministrator).
 
 While I feel well-prepared, there are still some nerves about tomorrow. Not sure exactly what to expect, but I'm looking forward to the challenge. I decided to take the exam at a test center instead of using OnVue - no need for extra stress from potential technical issues.
-
