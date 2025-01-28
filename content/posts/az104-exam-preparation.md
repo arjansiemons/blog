@@ -1,7 +1,7 @@
 ---
 date: '2025-01-28T13:41:00+01:00'
 draft: false
-title: 'AZ-104 Exam Preparation'
+title: 'AZ-104 Azure Adminstrator Exam Preparation'
 tags: ["azure", "certification", "az104", "cloud"]
 ---
 
