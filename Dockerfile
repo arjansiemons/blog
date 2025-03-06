@@ -2,21 +2,30 @@
 #                            Build Stage                            #
 #####################################################################
 FROM hugomods/hugo:exts as builder
-# Base URL
-#ARG HUGO_BASEURL=
-#ENV HUGO_BASEURL=${HUGO_BASEURL}
+
 # Build site
-COPY . /src
-# Replace below build command at will.
+WORKDIR /src
+COPY . .
+
+# Build Hugo site
 RUN hugo --minify --enableGitInfo
-# Set the fallback 404 page if defaultContentLanguageInSubdir is enabled,
-# please replace the `en` with your default language code.
-RUN cp ./public/en/404.html ./public/404.html
+
+# We use Nginx's default error handling, so no need to ensure 404.html exists
 
 #####################################################################
 #                            Final Stage                            #
 #####################################################################
-FROM hugomods/hugo:nginx
-# Copy the generated files to keep the image as small as possible.
-COPY --from=builder /src/public /site
+FROM nginx:alpine
 
+# Add extra functionality
+RUN apk add --no-cache curl ca-certificates
+
+# We use K8s ConfigMap for Nginx configuration
+# No need to copy a config file here
+
+# Copy built site from builder stage
+COPY --from=builder /src/public /usr/share/nginx/html
+
+# Default command
+EXPOSE 80
+CMD ["nginx", "-g", "daemon off;"]
